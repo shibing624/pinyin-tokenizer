@@ -16,10 +16,9 @@ pinyin tokenizer（拼音分词器），将连续的拼音切分为单字拼音�
 - [Feature](#Feature)
 - [Install](#install)
 - [Usage](#usage)
-- [Dataset](#Dataset)
 - [Contact](#Contact)
 - [Citation](#Citation)
-- [Reference](#reference)
+- [Related Projects](#Related Projects)
 
 # Feature
 
