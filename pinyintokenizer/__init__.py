@@ -454,6 +454,11 @@ class PinyinTokenizer(object):
         self.add(["zh", "uo"])
 
     def tokenize(self, sent):
+        """
+        Tokenize a sentence into pinyin list.
+        :param sent: pinyin sentence
+        :return: pinyin_list, invalid pinyin list
+        """
         words = []
         invalid_words = []
         while len(sent) > 0:
@@ -472,15 +477,3 @@ if __name__ == "__main__":
     m = PinyinTokenizer()
     words, invalid_words = m.tokenize("jintianxtianqibucuo")
     print("words: {}".format(words))
-    """
-    import sys
-    sys.path.append('..')
-
-    from Pinyin2Hanzi import DefaultDagParams
-    from Pinyin2Hanzi import dag
-
-    dagparams = DefaultDagParams()
-    result = dag(dagparams, words, path_num=1)
-    for item in result:
-        print(item.score, ''.join(item.path))
-    """

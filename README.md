@@ -43,7 +43,7 @@ python setup.py install
 
 # Usage
 
-## Pinyin Tokenizer
+## 拼音切分（Pinyin Tokenizer）
 
 example：[examples/pinyin_tokenize_demo.py](examples/pinyin_tokenize_demo.py):
 
@@ -74,6 +74,46 @@ output:
 (['o', 'o', 'lu'], ['g', 'd', ' ', 'c', 'k'])
 (['xi', 'an', 'jiao', 'tong', 'da', 'xue'], [' '])
 ```
+ps: `tokenize`方法返回两个结果，第一个为拼音列表，第二个为非法拼音列表。
+
+
+## 连续拼音转汉字（Pinyin2Hanzi）
+先使用本库[pinyintokenizer](https://pypi.org/project/pinyintokenizer/)把连续拼音切分，再使用[Pinyin2Hanzi](https://pypi.org/project/Pinyin2Hanzi/)库把拼音转汉字。
+
+example：[examples/pinyin2hanzi_demo.py](examples/pinyin2hanzi_demo.py):
+
+
+```python
+import sys
+from Pinyin2Hanzi import DefaultDagParams
+from Pinyin2Hanzi import dag
+
+sys.path.append('..')
+from pinyintokenizer import PinyinTokenizer
+
+dagparams = DefaultDagParams()
+
+
+def pinyin2hanzi(pinyin_sentence):
+    pinyin_list, _ = PinyinTokenizer().tokenize(pinyin_sentence)
+    result = dag(dagparams, pinyin_list, path_num=1)
+    return ''.join(result[0].path)
+
+
+if __name__ == '__main__':
+    print(f"{pinyin2hanzi('wo3')}")
+    print(f"{pinyin2hanzi('jintianxtianqibucuo')}")
+    print(f"{pinyin2hanzi('liudehua')}")
+```
+
+output:
+
+```shell
+我
+今天天气不错
+刘德华
+```
+
 
 
 # Contact
