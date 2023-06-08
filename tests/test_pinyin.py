@@ -4,9 +4,8 @@
 @description: 
 """
 
-import unittest
-
 import sys
+import unittest
 
 sys.path.append('..')
 from pinyintokenizer import PinyinTokenizer
@@ -41,6 +40,30 @@ class PinyinTestCase(unittest.TestCase):
         r = m.tokenize('liude hua3')
         print(r)
         self.assertTrue(r[0] == ['liu', 'de', 'hua'])
+
+    def test_badcase(self):
+        m = PinyinTokenizer()
+        r = m.tokenize("lvyou")
+        print(r)
+        self.assertTrue(r[0] == ['lv', 'you'])
+        r = m.tokenize("lv2you")
+        print(r)
+        self.assertTrue(r[0] == ['lv', 'you'])
+        self.assertTrue(r[1] == ['2'])
+
+        r = m.tokenize("nv3ren2")
+        print(r)
+        self.assertTrue(r[0] == ['nv', 'ren'])
+        self.assertTrue(r[1] == ['3', '2'])
+
+        r = m.tokenize("nvyougongnue")
+        print(r)
+
+        r = m.tokenize("nuedai") # 虐待
+        print(r)
+
+        r = m.tokenize("jielue")  # 劫掠
+        print(r)
 
 
 if __name__ == '__main__':
