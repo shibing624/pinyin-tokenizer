@@ -58,10 +58,14 @@ if __name__ == '__main__':
     m = PinyinTokenizer()
     print(f"{m.tokenize('wo3')}")
     print(f"{m.tokenize('nihao')}")
+    print(f"{m.tokenize('lv3you2')}")  # 旅游
     print(f"{m.tokenize('liudehua')}")
-    print(f"{m.tokenize('liu de hua')}")
+    print(f"{m.tokenize('liu de hua')}")  # 刘德华
+    print(f"{m.tokenize('womenzuogelvyougongnue')}")  # 我们做个旅游攻略
+    print(f"{m.tokenize('xi anjiaotongdaxue')}")  # 西安交通大学
+
+    # not support english
     print(f"{m.tokenize('good luck')}")
-    print(f"{m.tokenize('xi anjiaotongdaxue')}")
 ```
 
 output:
@@ -69,12 +73,14 @@ output:
 ```shell
 (['wo'], ['3'])
 (['ni', 'hao'], [])
+(['lv', 'you'], ['3', '2'])
 (['liu', 'de', 'hua'], [])
 (['liu', 'de', 'hua'], [' ', ' '])
-(['o', 'o', 'lu'], ['g', 'd', ' ', 'c', 'k'])
+(['wo', 'men', 'zuo', 'ge', 'lv', 'you', 'gong', 'nue'], [])
 (['xi', 'an', 'jiao', 'tong', 'da', 'xue'], [' '])
+(['o', 'o', 'lu'], ['g', 'd', ' ', 'c', 'k'])
 ```
-ps: `tokenize`方法返回两个结果，第一个为拼音列表，第二个为非法拼音列表。
+- `tokenize`方法返回两个结果，第一个为拼音列表，第二个为非法拼音列表。
 
 
 ## 连续拼音转汉字（Pinyin2Hanzi）
