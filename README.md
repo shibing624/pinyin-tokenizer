@@ -20,11 +20,11 @@ pinyin tokenizer（拼音分词器），将连续的拼音切分为单字拼音�
 - [Citation](#Citation)
 - [Related-Projects](#Related-Projects)
 
-# Feature
+## Feature
 
 - 基于前缀树（PyTrie）高效快速把连续拼音切分为单字拼音列表，便于后续拼音转汉字等处理。
 
-# Install
+## Install
 
 - Requirements and Installation
 
@@ -41,9 +41,9 @@ python setup.py install
 ```
 
 
-# Usage
+## Usage
 
-## 拼音切分（Pinyin Tokenizer）
+### 拼音切分（Pinyin Tokenizer）
 
 example：[examples/pinyin_tokenize_demo.py](examples/pinyin_tokenize_demo.py):
 
@@ -83,7 +83,7 @@ output:
 - `tokenize`方法返回两个结果，第一个为拼音列表，第二个为非法拼音列表。
 
 
-## 连续拼音转汉字（Pinyin2Hanzi）
+### 连续拼音转汉字（Pinyin2Hanzi）
 先使用本库[pinyintokenizer](https://pypi.org/project/pinyintokenizer/)把连续拼音切分，再使用[Pinyin2Hanzi](https://pypi.org/project/Pinyin2Hanzi/)库把拼音转汉字。
 
 example：[examples/pinyin2hanzi_demo.py](examples/pinyin2hanzi_demo.py):
@@ -122,7 +122,7 @@ output:
 
 
 
-# Contact
+## Contact
 
 - Issue(建议)：[![GitHub issues](https://img.shields.io/github/issues/shibing624/pinyin-tokenizer.svg)](https://github.com/shibing624/pinyin-tokenizer/issues)
 - 邮件我：xuming: xuming624@qq.com
@@ -130,7 +130,7 @@ output:
 <img src="docs/wechat.jpeg" width="200" />
 
 
-# Citation
+## Citation
 
 如果你在研究中使用了pinyin-tokenizer，请按如下格式引用：
 
@@ -150,13 +150,13 @@ BibTeX:
 ```
 
 
-# License
+## License
 
 
 授权协议为 [The Apache License 2.0](LICENSE)，可免费用做商业用途。请在产品说明中附加**pinyin-tokenizer**的链接和授权协议。
 
 
-# Contribute
+## Contribute
 项目代码还很粗糙，如果大家对代码有所改进，欢迎提交回本项目，在提交之前，注意以下两点：
 
  - 在`tests`添加相应的单元测试
@@ -165,7 +165,7 @@ BibTeX:
 之后即可提交PR。
 
 
-# Related Projects
+## Related Projects
 
 - 汉字转拼音：[pypinyin](https://github.com/mozillazg/python-pinyin)
 - 拼音转汉字：[Pinyin2Hanzi](https://github.com/letiantian/Pinyin2Hanzi)
