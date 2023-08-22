@@ -1,5 +1,5 @@
 [![PyPI version](https://badge.fury.io/py/pinyintokenizer.svg)](https://badge.fury.io/py/pinyin-tokenizer)
-[![Downloads](https://pepy.tech/badge/pinyintokenizer)](https://pepy.tech/project/pinyin-tokenizer)
+[![Downloads](https://static.pepy.tech/badge/pinyintokenizer)](https://pepy.tech/project/pinyin-tokenizer)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![GitHub contributors](https://img.shields.io/github/contributors/shibing624/pinyin-tokenizer.svg)](https://github.com/shibing624/pinyin-tokenizer/graphs/contributors)
 [![License Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
