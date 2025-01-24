@@ -59,11 +59,33 @@ class PinyinTestCase(unittest.TestCase):
         r = m.tokenize("nvyougongnue")
         print(r)
 
-        r = m.tokenize("nuedai") # 虐待
+        r = m.tokenize("nuedai")  # 虐待
         print(r)
 
         r = m.tokenize("jielue")  # 劫掠
         print(r)
+
+    def test_badcase2(self):
+        m = PinyinTokenizer()
+        r = m.tokenize("yingguoguanxi")
+        print(r)
+        self.assertEqual(r[0], ['ying', 'guo', 'guan', 'xi'])
+        self.assertEqual(r[1], [])
+
+        r = m.tokenize("yingxiang")  # 影响
+        print(r)
+        self.assertEqual(r[0], ['ying', 'xiang'])
+        self.assertEqual(r[1], [])
+
+        r = m.tokenize("yingyong")  # 应用
+        print(r)
+        self.assertEqual(r[0], ['ying', 'yong'])
+        self.assertEqual(r[1], [])
+
+        r = m.tokenize("yingguo")
+        print(r)
+        self.assertEqual(r[0], ['ying', 'guo'])
+        self.assertEqual(r[1], [])
 
 
 if __name__ == '__main__':
