@@ -3,7 +3,7 @@
 @author:XuMing(xuming624@qq.com)
 @description: 
 """
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 
 class PyTrieNode(object):
@@ -25,16 +25,26 @@ class PyTrieNode(object):
             else:
                 self.children[key] = PyTrieNode(key, value)
 
-    def find(self, sent):
-        for i in range(len(sent)):
-            i = len(sent) - i
-            if len(sent) >= i:
-                key = sent[:i]
+    def find(self, sentence):
+        for i in range(len(sentence)):
+            j = len(sentence) - i
+            if len(sentence) >= j:
+                key = sentence[:j]
                 if key in self.children:
-                    buf, succ = self.children[key].find(sent[i:])
-                    if succ:
-                        return key + buf, True
+                    buffer, success = self.children[key].find(sentence[j:])
+                    if success:
+                        # Generalize special case handling
+                        if buffer and self.is_special_case(buffer[-1]):
+                            b1, s1 = self.children[key].find(buffer[:-1])
+                            _, s2 = self.children[buffer[-1]].find(sentence[j + len(buffer):])
+                            if s1 and s2:
+                                return key + b1, True
+                        return key + buffer, True
         return "", self.end
+
+    def is_special_case(self, char):
+        # Define the special case condition here
+        return char in ['g']
 
 
 class PinyinTokenizer(object):
@@ -462,12 +472,16 @@ class PinyinTokenizer(object):
         Tokenize a sentence into pinyin list.
         :param sent: pinyin sentence
         :return: pinyin_list, invalid pinyin list
+
+        :example:
+            m = PinyinTokenizer()
+            words, invalid_words = m.tokenize("liudehua")
+            print("words: {}".format(words))
         """
         words = []
         invalid_words = []
         while len(sent) > 0:
             buf, succ = self.root.find(sent)
-            # print("buf: {}, succ: {}".format(buf, succ))
             if succ:
                 words.append(buf)
                 sent = sent[len(buf):]
@@ -479,5 +493,5 @@ class PinyinTokenizer(object):
 
 if __name__ == "__main__":
     m = PinyinTokenizer()
-    words, invalid_words = m.tokenize("jintianxtianqibucuo")
+    words, invalid_words = m.tokenize("liudehua")
     print("words: {}".format(words))

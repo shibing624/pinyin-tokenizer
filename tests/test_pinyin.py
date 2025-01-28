@@ -67,6 +67,11 @@ class PinyinTestCase(unittest.TestCase):
 
     def test_badcase2(self):
         m = PinyinTokenizer()
+        r = m.tokenize("yinguoguanxi")
+        print(r)
+        self.assertEqual(r[0], ['yin', 'guo', 'guan', 'xi'])
+        self.assertEqual(r[1], [])
+
         r = m.tokenize("yingguoguanxi")
         print(r)
         self.assertEqual(r[0], ['ying', 'guo', 'guan', 'xi'])
